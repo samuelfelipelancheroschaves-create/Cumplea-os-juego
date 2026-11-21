@@ -1,0 +1,185 @@
+import type { LevelDef } from "./types.ts";
+
+// Player stands with feet on a surface: spawn.y = surfaceY - 62.
+// Single-jump gaps stay under ~90px. The wide garden gap asks for a double jump.
+
+const ground = (x: number, y: number, w: number) => ({ x, y, w, h: 240 });
+
+export const LEVELS: LevelDef[] = [
+  {
+    id: "porche",
+    name: "El inicio",
+    blurb: "La chispa y lo que sentía.",
+    width: 2400,
+    height: 760,
+    spawn: { x: 36, y: 458 },
+    killY: 700,
+    sky: "morning",
+    solids: [
+      ground(0, 520, 700),
+      { x: 790, y: 464, w: 150, h: 22, oneWay: true },
+      { x: 1020, y: 408, w: 170, h: 22, oneWay: true },
+      ground(1260, 520, 400),
+      ground(1860, 520, 540),
+    ],
+    movers: [
+      {
+        id: "nube-1",
+        x: 1685,
+        y: 520,
+        w: 150,
+        h: 22,
+        axis: "x",
+        amp: 40,
+        period: 4,
+      },
+    ],
+    coins: [
+      { id: "p1", x: 180, y: 470 },
+      { id: "p2", x: 320, y: 440 },
+      { id: "p3", x: 480, y: 470 },
+      { id: "p4", x: 850, y: 410 },
+      { id: "p5", x: 1090, y: 350 },
+      { id: "p6", x: 1420, y: 460 },
+      { id: "p7", x: 1760, y: 460 },
+      { id: "p8", x: 2060, y: 450 },
+    ],
+    hazards: [{ x: 1470, y: 496, w: 64, h: 24 }],
+    checkpoints: [{ id: "farol-1", x: 1300, y: 458 }],
+    cards: [
+      { id: "carta-4", x: 470, y: 442 },
+      { id: "carta-1", x: 1076, y: 330 },
+    ],
+    flag: { x: 2240, y: 410, w: 48, h: 110 },
+    hints: [{ x: 710, y: 430, text: "Salta y mantén" }],
+    balloons: [
+      { x: 240, y: 180, tint: "rose" },
+      { x: 980, y: 140, tint: "gold" },
+      { x: 1680, y: 160, tint: "cream" },
+      { x: 2100, y: 120, tint: "sage" },
+    ],
+  },
+  {
+    id: "jardin",
+    name: "El flechazo",
+    blurb: "Porque tú, y el primer amor.",
+    width: 2720,
+    height: 780,
+    spawn: { x: 36, y: 458 },
+    killY: 710,
+    sky: "garden",
+    solids: [
+      ground(0, 520, 460),
+      { x: 590, y: 520, w: 180, h: 24, oneWay: true },
+      { x: 860, y: 456, w: 160, h: 22, oneWay: true },
+      ground(1080, 520, 440),
+      { x: 1770, y: 424, w: 220, h: 22, oneWay: true },
+      ground(2030, 520, 690),
+    ],
+    movers: [
+      {
+        id: "nube-2",
+        x: 1600,
+        y: 472,
+        w: 130,
+        h: 22,
+        axis: "y",
+        amp: 48,
+        period: 3.6,
+      },
+    ],
+    coins: [
+      { id: "j1", x: 200, y: 460 },
+      { id: "j2", x: 380, y: 420 },
+      { id: "j3", x: 660, y: 460 },
+      { id: "j4", x: 930, y: 400 },
+      { id: "j5", x: 1280, y: 460 },
+      { id: "j6", x: 1660, y: 390 },
+      { id: "j7", x: 1900, y: 370 },
+      { id: "j8", x: 2360, y: 450 },
+    ],
+    hazards: [{ x: 1360, y: 496, w: 58, h: 24 }],
+    checkpoints: [{ id: "farol-2", x: 1140, y: 458 }],
+    cards: [
+      { id: "carta-5", x: 250, y: 442 },
+      { id: "carta-2", x: 1824, y: 346 },
+    ],
+    flag: { x: 2480, y: 410, w: 48, h: 110 },
+    hints: [{ x: 470, y: 450, text: "Doble salto" }],
+    balloons: [
+      { x: 160, y: 160, tint: "sage" },
+      { x: 740, y: 200, tint: "rose" },
+      { x: 1500, y: 150, tint: "gold" },
+      { x: 2300, y: 140, tint: "cream" },
+    ],
+  },
+  {
+    id: "terraza",
+    name: "Hoy y siempre",
+    blurb: "El presente y el futuro.",
+    width: 2720,
+    height: 760,
+    spawn: { x: 40, y: 438 },
+    killY: 700,
+    sky: "dusk",
+    solids: [
+      ground(0, 500, 520),
+      ground(820, 500, 620),
+      ground(1780, 500, 940),
+    ],
+    movers: [
+      {
+        id: "nube-3",
+        x: 532,
+        y: 500,
+        w: 276,
+        h: 22,
+        axis: "x",
+        amp: 36,
+        period: 5.4,
+      },
+      {
+        id: "nube-4",
+        x: 1480,
+        y: 478,
+        w: 260,
+        h: 22,
+        axis: "y",
+        amp: 12,
+        period: 3.6,
+      },
+    ],
+    coins: [
+      { id: "t1", x: 180, y: 450 },
+      { id: "t2", x: 360, y: 430 },
+      { id: "t3", x: 660, y: 450 },
+      { id: "t4", x: 980, y: 450 },
+      { id: "t5", x: 1240, y: 420 },
+      { id: "t6", x: 1600, y: 420 },
+      { id: "t7", x: 2060, y: 450 },
+      { id: "t8", x: 2460, y: 430 },
+    ],
+    hazards: [{ x: 2140, y: 476, w: 56, h: 24 }],
+    checkpoints: [
+      { id: "farol-3", x: 900, y: 438 },
+      { id: "farol-4", x: 1880, y: 438 },
+    ],
+    cards: [
+      { id: "carta-6", x: 280, y: 422 },
+      { id: "carta-3", x: 2240, y: 422 },
+    ],
+    flag: { x: 2520, y: 390, w: 48, h: 110 },
+    hints: [{ x: 500, y: 430, text: "Salta a la nube" }],
+    balloons: [
+      { x: 220, y: 140, tint: "rose" },
+      { x: 700, y: 110, tint: "gold" },
+      { x: 1200, y: 130, tint: "cream" },
+      { x: 1680, y: 100, tint: "rose" },
+      { x: 2300, y: 120, tint: "gold" },
+    ],
+  },
+];
+
+export function levelById(id: string): LevelDef | undefined {
+  return LEVELS.find((level) => level.id === id);
+}
